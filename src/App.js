@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import HeaderTodoList from "./HeaderTodoList";
 import TodoList from "./TodoList";
 import FooterTodoList from "./FooterTodoList";
@@ -8,6 +8,7 @@ import "./App.css";
 function App() {
     const [todos, setTodos] = useState(data.taches);
 
+    // Fonction pour ajouter une tâche
     const handleAddTodo = () => {
         const newTodo = {
             id: Date.now(),
@@ -22,14 +23,15 @@ function App() {
         setTodos([...todos, newTodo]);
     };
 
+    // Fonction pour mettre à jour une tâche
     const handleUpdateTodo = (id, updatedTodo) => {
-      setTodos(todos.map(todo => (todo.id === id ? { ...todo, ...updatedTodo } : todo)));
-  };
+        setTodos(todos.map(todo => (todo.id === id ? { ...todo, ...updatedTodo } : todo)));
+    };
 
-  return (
-      <div className="App">
-          <HeaderTodoList />
-          <TodoList todos={todos} onUpdate={handleUpdateTodo} />
+    return (
+        <div className="App">
+            <HeaderTodoList />
+            <TodoList todos={todos} onUpdate={handleUpdateTodo} />
             <FooterTodoList onAddTodo={handleAddTodo} />
         </div>
     );

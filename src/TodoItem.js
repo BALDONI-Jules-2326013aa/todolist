@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
-function TodoItem({ id, title, description, date_creation, date_echeance, done, urgent, contacts, onUpdate }) {
-    const [isEditing, setIsEditing] = useState(false);
+function TodoItem({ id, title, description, date_echeance, done, urgent, contacts, onUpdate }) {
     const [editedTodo, setEditedTodo] = useState({
         title,
         description,
@@ -21,12 +20,24 @@ function TodoItem({ id, title, description, date_creation, date_echeance, done, 
 
     const handleSave = () => {
         onUpdate(id, editedTodo);
-        setIsEditing(false);
     };
 
     return (
         <div className={`todo-item ${editedTodo.done ? "completed" : ""} ${editedTodo.urgent ? "urgent" : ""}`}>
-            {isEditing ? (
+            {/* ✅ Si la tâche est complétée, on affiche seulement le titre et la checkbox */}
+            {editedTodo.done ? (
+                <>
+                    <h3 className="todo-title">{editedTodo.title}</h3>
+                    <label>
+                        <input
+                            type="checkbox"
+                            name="done"
+                            checked={editedTodo.done}
+                            onChange={handleChange}
+                        />
+                    </label>
+                </>
+            ) : (
                 <>
                     <input
                         type="text"
@@ -34,18 +45,22 @@ function TodoItem({ id, title, description, date_creation, date_echeance, done, 
                         value={editedTodo.title}
                         onChange={handleChange}
                         placeholder="Titre"
+                        className="todo-item-title"
                     />
                     <textarea
                         name="description"
                         value={editedTodo.description}
                         onChange={handleChange}
                         placeholder="Description"
+                        className="todo-item-description"
+                        resize="none"
                     />
                     <input
                         type="date"
                         name="date_echeance"
                         value={editedTodo.date_echeance}
                         onChange={handleChange}
+                        className="todo-item-date"
                     />
                     <label>
                         <input
@@ -65,27 +80,6 @@ function TodoItem({ id, title, description, date_creation, date_echeance, done, 
                         />
                         Urgent ❗
                     </label>
-                    <button onClick={handleSave}>💾 Enregistrer</button>
-                </>
-            ) : (
-                <>
-                    <h3>{editedTodo.title}</h3>
-                    <p>{editedTodo.description}</p>
-                    <p><strong>Créé le :</strong> {new Date(date_creation).toLocaleDateString()}</p>
-                    <p><strong>Échéance :</strong> {new Date(editedTodo.date_echeance).toLocaleDateString()}</p>
-                    <p><strong>Statut :</strong> {editedTodo.done ? "Terminée ✅" : "En cours ⏳"}</p>
-                    <p><strong>Urgent :</strong> {editedTodo.urgent ? "Oui ❗" : "Non"}</p>
-                    {contacts.length > 0 && (
-                        <div>
-                            <strong>Contacts :</strong>
-                            <div className="contacts">
-                                {contacts.map((contact, index) => (
-                                    <span key={index}>{contact.name}</span>
-                                ))}
-                            </div>
-                        </div>
-                    )}
-                    <button onClick={() => setIsEditing(true)}>✏ Modifier</button>
                 </>
             )}
         </div>
