@@ -1,0 +1,215 @@
+.todo-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 0;
+    width: 80%;
+    max-width: 1000px;
+  }
+  
+  .todo-list h2 {
+    font-size: 22px;
+    color: #e0e0e0;
+    margin: 10px 0 15px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .todo-list h2::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background-color: #3a3d42;
+    margin-left: 10px;
+  }
+  
+  .todo-controls {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 20px;
+    gap: 15px;
+    background-color: #2a2d32;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .filter-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  
+  .filter-button {
+    background-color: #3a3d42;
+    color: #e0e0e0;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+  }
+  
+  .filter-button.active {
+    background-color: #f5c518;
+    color: #1e1e1e;
+    font-weight: 600;
+  }
+  
+  .filter-button:hover:not(.active) {
+    background-color: #4a4d52;
+    transform: translateY(-2px);
+  }
+  
+  .category-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 10px 0;
+  }
+  
+  .category-filter {
+    padding: 6px 12px;
+    border-radius: 20px;
+    border: 2px solid;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.2s;
+    color: #e0e0e0;
+  }
+  
+  .category-filter.active {
+    color: #1e1e1e;
+    font-weight: 600;
+  }
+  
+  .category-filter:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .search-sort-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+  
+  .sort-dropdown {
+    position: relative;
+    display: inline-block;
+    z-index: 100;
+  }
+  
+  .sort-button {
+    background-color: #3a3d42;
+    color: #e0e0e0;
+    border: 1px solid #555;
+    border-radius: 8px;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 200px;
+    transition: all 0.2s;
+  }
+  
+  .sort-button:hover {
+    background-color: #4a4d52;
+  }
+  
+  .sort-icon {
+    font-size: 12px;
+  }
+  
+  .sort-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #2a2d32;
+    border: 1px solid #555;
+    border-radius: 8px;
+    margin-top: 5px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+  }
+  
+  .sort-options button {
+    width: 100%;
+    padding: 12px;
+    text-align: left;
+    background: none;
+    border: none;
+    color: #e0e0e0;
+    transition: background 0.2s;
+    font-size: 14px;
+  }
+  
+  .sort-options button:hover {
+    background-color: #3a3d42;
+  }
+  
+  .sort-options button.active {
+    background-color: #4a4d52;
+    color: #f5c518;
+    font-weight: 600;
+  }
+  
+  .search-container {
+    position: relative;
+    flex: 1;
+    min-width: 200px;
+  }
+  
+  .search-input {
+    width: 100%;
+    padding: 12px 40px 12px 15px;
+    border: 1px solid #555;
+    border-radius: 8px;
+    background-color: #3a3d42;
+    color: #e0e0e0;
+    font-size: 14px;
+    transition: all 0.2s;
+  }
+  
+  .search-input:focus {
+    outline: none;
+    border-color: #f5c518;
+    box-shadow: 0 0 0 2px rgba(245, 197, 24, 0.2);
+  }
+  
+  .clear-search {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #999;
+    font-size: 16px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .clear-search:hover {
+    color: #ccc;
+  }
+  
+  .no-tasks {
+    text-align: center;
+    font-style: italic;
+    color: #999;
+    margin: 50px 0;
+    padding: 30px;
+    background-color: #2a2d32;
+    border-radius: 10px;
+    border: 1px dashed #555;
+  }
